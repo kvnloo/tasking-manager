@@ -73,6 +73,63 @@ export default defineMessages({
     id: 'project.tasks.project_not_published_error.description',
     defaultMessage: 'Mapping not allowed because project not published',
   },
+  UserNotCorrectMappingLevelError: {
+    id: 'project.tasks.user_not_correct_mapping_level_error.title',
+    defaultMessage: 'Experience level requirement',
+  },
+  UserNotCorrectMappingLevelErrorDescription: {
+    id: 'project.tasks.user_not_correct_mapping_level_error.description',
+    defaultMessage:
+      'Your experience level does not meet the minimum required for this project action.',
+  },
+  UserNotTeamMemberError: {
+    id: 'project.tasks.user_not_team_member_error.title',
+    defaultMessage: 'Team membership required',
+  },
+  UserNotTeamMemberErrorDescription: {
+    id: 'project.tasks.user_not_team_member_error.description',
+    defaultMessage: 'You need to belong to a team assigned to this project before working on this task.',
+  },
+  ProjectHasNoTeamError: {
+    id: 'project.tasks.project_has_no_team_error.title',
+    defaultMessage: 'Project team configuration required',
+  },
+  ProjectHasNoTeamErrorDescription: {
+    id: 'project.tasks.project_has_no_team_error.description',
+    defaultMessage: 'This project requires team access, but no eligible team is configured.',
+  },
+  NotAMappingTeamError: {
+    id: 'project.tasks.not_a_mapping_team_error.title',
+    defaultMessage: 'Mapping team required',
+  },
+  NotAMappingTeamErrorDescription: {
+    id: 'project.tasks.not_a_mapping_team_error.description',
+    defaultMessage: 'Your team is not configured as a mapping team for this project.',
+  },
+  NotAValidationTeamError: {
+    id: 'project.tasks.not_a_validation_team_error.title',
+    defaultMessage: 'Validation team required',
+  },
+  NotAValidationTeamErrorDescription: {
+    id: 'project.tasks.not_a_validation_team_error.description',
+    defaultMessage: 'Your team is not configured as a validation team for this project.',
+  },
+  UserNotValidatorError: {
+    id: 'project.tasks.user_not_validator_error.title',
+    defaultMessage: 'Validation permission required',
+  },
+  UserNotValidatorErrorDescription: {
+    id: 'project.tasks.user_not_validator_error.description',
+    defaultMessage: 'Your account does not currently have permission to validate tasks on this project.',
+  },
+  UserAlreadyHasTaskLockedError: {
+    id: 'project.tasks.user_already_has_task_locked_error.title',
+    defaultMessage: 'Another task is already locked',
+  },
+  UserAlreadyHasTaskLockedErrorDescription: {
+    id: 'project.tasks.user_already_has_task_locked_error.description',
+    defaultMessage: 'Finish or unlock your existing task before locking another one.',
+  },
   TaskNotOwnedError: {
     id: 'project.tasks.task_not_owned_error.title',
     defaultMessage: 'Task Not Owned',
