@@ -118,21 +118,41 @@ export const LicenseError = ({ id, close, lockTasks }) => {
   );
 };
 
+export function normalizeLockError(error) {
+  if (typeof error !== 'string') {
+    return error;
+  }
+
+  const code = error.includes('.') ? error.split('.').pop() : error;
+  if (!code.includes('_')) {
+    return code;
+  }
+
+  return code
+    .toLowerCase()
+    .split('_')
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
+}
+
 export function LockError({ error, close, tasks, selectedTasks, setSelectedTasks, lockTasks }) {
-  const shouldShowDeselectButton = error === 'CannotValidateMappedTask' && selectedTasks.length > 1;
+  const normalizedError = normalizeLockError(error);
+  const shouldShowDeselectButton =
+    normalizedError === 'CannotValidateMappedTask' && selectedTasks.length > 1;
 
   return (
     <>
       <h3 className="barlow-condensed f3 fw6 mv0">
-        {messages[`${error}Error`] ? (
-          <FormattedMessage {...messages[`${error}Error`]} />
+        {messages[`${normalizedError}Error`] ? (
+          <FormattedMessage {...messages[`${normalizedError}Error`]} />
         ) : (
           <FormattedMessage {...messages.lockError} />
         )}
       </h3>
       <div className="mv4 lh-title">
-        {messages[`${error}ErrorDescription`] ? (
-          <FormattedMessage {...messages[`${error}ErrorDescription`]} />
+        {messages[`${normalizedError}ErrorDescription`] ? (
+          <FormattedMessage {...messages[`${normalizedError}ErrorDescription`]} />
         ) : (
           <FormattedMessage {...messages.lockErrorDescription} />
         )}
