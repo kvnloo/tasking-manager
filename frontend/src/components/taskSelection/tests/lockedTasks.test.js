@@ -11,6 +11,7 @@ import {
   AnotherProjectLock,
   LicenseError,
   LockError,
+  normalizeLockError,
 } from '../lockedTasks';
 import {
   createComponentWithMemoryRouter,
@@ -167,6 +168,35 @@ describe('License Modal', () => {
       }),
     );
     expect(closeMock).toHaveBeenCalled();
+  });
+});
+
+describe('LockError backend subcodes', () => {
+  it('normalizes enum-style API subcodes', () => {
+    expect(
+      normalizeLockError('MappingNotAllowed.USER_NOT_CORRECT_MAPPING_LEVEL'),
+    ).toBe('UserNotCorrectMappingLevel');
+    expect(normalizeLockError('ValidatingNotAllowed.NOT_A_VALIDATION_TEAM')).toBe(
+      'NotAValidationTeam',
+    );
+  });
+
+  it('shows the concrete mapping-level rejection reason', () => {
+    render(
+      <ReduxIntlProviders>
+        <LockError
+          error="MappingNotAllowed.USER_NOT_CORRECT_MAPPING_LEVEL"
+          selectedTasks={[]}
+        />
+      </ReduxIntlProviders>,
+    );
+
+    expect(screen.getByText('Experience level requirement')).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        'Your experience level does not meet the minimum required for this project action.',
+      ),
+    ).toBeInTheDocument();
   });
 });
 
